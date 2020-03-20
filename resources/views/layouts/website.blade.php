@@ -31,11 +31,11 @@
 
 <body>
 
-@include('partials/navbar')
+@include('partials.website.navbar')
 
 @yield('content')
 
-@include('partials/footer')
+@include('partials.website.footer')
 
 
 <div class="preloader" id="preloader">
