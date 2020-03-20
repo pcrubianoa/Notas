@@ -1,0 +1,1 @@
+$codingeek="https://codingeek.net/"; $buynow="https://themeforest.net/item/banting-university-educational-site-template/25500130";
