@@ -152,8 +152,8 @@
                             <div class="az-img-user">
                                 <img src="https://via.placeholder.com/500x500" alt="">
                             </div><!-- az-img-user -->
-                            <h6>Aziana Pechon</h6>
-                            <span>Premium Member</span>
+                            <h6>{{ Auth::user()->name  }}</h6>
+                            <span>{{ Auth::user()->email  }}</span>
                         </div><!-- az-header-profile -->
 
                         <a href="" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My Profile</a>
