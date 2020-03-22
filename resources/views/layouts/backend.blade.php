@@ -43,7 +43,7 @@
 
 <div class="az-sidebar">
     <div class="az-sidebar-header">
-        <a href="../template/index.html" class="az-logo">az<span>i</span>a</a>
+        <a href="../template/index.html" class="az-logo">Logo Colegio</a>
     </div><!-- az-sidebar-header -->
     <div class="az-sidebar-loggedin">
         <div class="az-img-user online"><img src="https://via.placeholder.com/500x500" alt=""></div>
@@ -54,36 +54,40 @@
     </div><!-- az-sidebar-loggedin -->
     <div class="az-sidebar-body">
         <ul class="nav">
-            <li class="nav-label">Main Menu</li>
-            <li class="nav-item active show">
-                <a href="" class="nav-link with-sub"><i class="typcn typcn-clipboard"></i>Dashboard</a>
-                <nav class="nav-sub">
-                    <a href="dashboard-one.html" class="nav-sub-link">Web Analytics</a>
-                    <a href="dashboard-two.html" class="nav-sub-link active">Sales Monitoring</a>
-                    <a href="dashboard-three.html" class="nav-sub-link">Ad Campaign</a>
-                    <a href="dashboard-four.html" class="nav-sub-link">Event Management</a>
-                    <a href="dashboard-five.html" class="nav-sub-link">Helpdesk Management</a>
-                    <a href="dashboard-six.html" class="nav-sub-link">Finance Monitoring</a>
-                    <a href="dashboard-seven.html" class="nav-sub-link">Cryptocurrency</a>
-                    <a href="dashboard-eight.html" class="nav-sub-link">Executive / SaaS</a>
-                    <a href="dashboard-nine.html" class="nav-sub-link">Campaign Monitoring</a>
-                    <a href="dashboard-ten.html" class="nav-sub-link">Product Management</a>
-                </nav>
+            <li class="nav-label">Menu Principal</li>
+            <li class="nav-item {{ request()->is('admin/tablero') || request()->is('admin/tablero/*') ? 'active' : '' }}">
+                <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-clipboard"></i>Tablero</a>
             </li><!-- nav-item -->
-            <li class="nav-item">
-                <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i>Apps &amp; Pages</a>
-                <nav class="nav-sub">
-                    <a href="app-mail.html" class="nav-sub-link">Mailbox</a>
-                    <a href="app-chat.html" class="nav-sub-link">Chat</a>
-                    <a href="app-calendar.html" class="nav-sub-link">Calendar</a>
-                    <a href="app-contacts.html" class="nav-sub-link">Contacts</a>
-                    <a href="page-profile.html" class="nav-sub-link">Profile</a>
-                    <a href="page-invoice.html" class="nav-sub-link">Invoice</a>
-                    <a href="page-signin.html" class="nav-sub-link">Sign In</a>
-                    <a href="page-signup.html" class="nav-sub-link">Sign Up</a>
-                    <a href="page-404.html" class="nav-sub-link">Page 404</a>
-                </nav>
-            </li><!-- nav-item -->
+            @can('periods_manage')
+                <li class="nav-item {{ request()->is('admin/periods') || request()->is('admin/periods/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.periods.index") }}" class="nav-link"><i class="typcn typcn-document"></i>Periodos</a>
+                </li><!-- nav-item -->
+            @endcan
+            @can('users_manage')
+                <li class="nav-item {{ request()->is('admin/students') || request()->is('admin/students/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-document"></i>Estudiantes</a>
+                </li><!-- nav-item -->
+            @endcan
+            @can('users_manage')
+                <li class="nav-item {{ request()->is('admin/teachers') || request()->is('admin/teachers/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-document"></i>Profesores</a>
+                </li><!-- nav-item -->
+            @endcan
+            @can('courses_manage')
+                <li class="nav-item {{ request()->is('admin/courses') || request()->is('admin/courses/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-document"></i>Cursos</a>
+                </li><!-- nav-item -->
+            @endcan
+            @can('subjects_manage')
+                <li class="nav-item {{ request()->is('admin/subjects') || request()->is('admin/subjects/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-document"></i>Materias</a>
+                </li><!-- nav-item -->
+            @endcan
+            @can('grades_manage')
+                <li class="nav-item {{ request()->is('admin/grades') || request()->is('admin/grades/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-document"></i>Notas</a>
+                </li><!-- nav-item -->
+            @endcan
         </ul><!-- nav -->
     </div><!-- az-sidebar-body -->
 </div><!-- az-sidebar -->
@@ -160,13 +164,12 @@
                         <a href="" class="dropdown-item"><i class="typcn typcn-edit"></i> Edit Profile</a>
                         <a href="" class="dropdown-item"><i class="typcn typcn-time"></i> Activity Logs</a>
                         <a href="" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Account Settings</a>
-                        <a href="page-signin.html" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Sign Out</a>
 
                         <div class="dropdown-item" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                <i class="typcn typcn-power-outline"></i>  {{ __('Logout') }}
+                                <i class="typcn typcn-power-outline"></i>  {{ __('Salir') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
