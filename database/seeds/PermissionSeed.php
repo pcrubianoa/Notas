@@ -29,5 +29,8 @@ class PermissionSeed extends Seeder
 
         // Courses
         Permission::create(['name' => 'courses_manage']);
+
+        // Permissions
+        Permission::create(['name' => 'permissions_manage']);
     }
 }

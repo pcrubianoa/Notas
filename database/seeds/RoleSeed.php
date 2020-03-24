@@ -18,6 +18,7 @@ class RoleSeed extends Seeder
         $role->givePermissionTo('subjects_manage');
         $role->givePermissionTo('courses_manage');
         $role->givePermissionTo('grades_manage');
+        $role->givePermissionTo('permissions_manage');
 
         $role = Role::create(['name' => 'teacher']);
         $role->givePermissionTo('subjects_manage');

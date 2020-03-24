@@ -28,18 +28,25 @@
     <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
     <meta name="author" content="ThemePixels">
 
-    <title>Azia Responsive Bootstrap 4 Dashboard Template</title>
+    <title>@yield('pageTitle')</title>
 
     <!-- vendor css -->
     <link href="{{ asset('lib/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/typicons.font/typicons.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('lib/datatables.net-dt/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('lib/select2/css/select2.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.min.css') }}">
+
     <!-- azia CSS -->
     <link rel="stylesheet" href="{{ asset('css/azia.css') }}">
 
 </head>
-<body class="az-body az-body-sidebar">
+<body class="az-body az-body-sidebar az-light">
 
 <div class="az-sidebar">
     <div class="az-sidebar-header">
@@ -71,6 +78,11 @@
             @can('users_manage')
                 <li class="nav-item {{ request()->is('admin/teachers') || request()->is('admin/teachers/*') ? 'active' : '' }}">
                     <a href="{{ route("admin.home") }}" class="nav-link"><i class="typcn typcn-document"></i>Profesores</a>
+                </li><!-- nav-item -->
+            @endcan
+            @can('permissions_manage')
+                <li class="nav-item {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                    <a href="{{ route("admin.permissions.index") }}" class="nav-link"><i class="typcn typcn-document"></i>Permisos</a>
                 </li><!-- nav-item -->
             @endcan
             @can('courses_manage')
@@ -184,8 +196,7 @@
     </div><!-- az-header -->
     <div class="az-content-header d-block d-md-flex">
         <div>
-            <h2 class="az-content-title mg-b-5 mg-b-lg-8">Hola, Bienvenido de nuevo!</h2>
-            <p class="mg-b-0">Este es tu tablero.</p>
+            <h2 class="az-content-title mg-b-5 mg-b-lg-8">@yield('pageSubtitle')</h2>
         </div>
     </div><!-- az-content-header -->
     <div class="az-content-body">
@@ -204,6 +215,15 @@
 <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('lib/ionicons/ionicons.js') }}"></script>
+
+<script src="{{ asset('lib/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('lib/datatables.net/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('lib/datatables.net/js/dataTables.buttons.min.js') }}"></script>
+
+<script src="{{ asset('lib/datatables.net-dt/js/dataTables.dataTables.min.js') }}"></script>
+<script src="{{ asset('lib/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js') }}"></script>
+<script src="{{ asset('lib/select2/js/select2.min.js') }}"></script>
 
 <script src="{{ asset('js/azia.js') }}"></script>
 <script>
@@ -240,5 +260,6 @@
         })
     });
 </script>
+@yield('javascript')
 </body>
 </html>

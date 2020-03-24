@@ -23,4 +23,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('/tablero', 'HomeController@index')->name('home');
     Route::resource('periods', 'Admin\PeriodController');
     //Route::delete('permissions_mass_destroy', 'Admin\PermissionsController@massDestroy')->name('permissions.mass_destroy');
+    Route::resource('permissions', 'Admin\PermissionsController');
+});
+
+Route::get('/route-list', function () {
+    Artisan::call('route:list');
+
+    return '<pre>'.Artisan::output();
 });
